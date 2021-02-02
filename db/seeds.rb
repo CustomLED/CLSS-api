@@ -12,6 +12,13 @@ Admin.destroy_all()
 
 bigdog = Admin.create(username: 'test_1', email: 'test_1@test.com', password: 'password', password_confirmation: 'password')
 
-Post.create(name: "Install at xxxx", text: "Did some install it was sick as aye", admin: bigdog)
+lildog = Post.create!(name: "Install at xxxx", text: "Did some install it was sick as aye", admin: bigdog)
 
 Enquiry.create(first_name: "Jed", last_name: "Foxxyton", organisation: "BigHole", email: "poo@email", phone_number: 04213222542, description: "I want some work done m8", admin: bigdog )
+
+# lildog.image.attach(
+#     io: File.open(Rails.root.join("app", "assets", "images", "lasagne.jpg")), 
+#     filename: 'lasagne.jpg',
+#     content_type: "image/jpg"
+# )
+# rails g migration add_image_to_posts image:image

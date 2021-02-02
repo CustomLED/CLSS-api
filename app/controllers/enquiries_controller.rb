@@ -8,7 +8,7 @@ class EnquiriesController < ApplicationController
 
     def create
         # render json: params
-        @enquiry= Enquiry.create(enquiry_params)
+        @enquiry = Enquiry.create(enquiry_params)
         if @enquiry.errors.any?
             render json: @enquiry.errors, status: :unprocessable_entity
         else

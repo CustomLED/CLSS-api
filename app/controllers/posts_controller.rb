@@ -7,15 +7,19 @@ class PostsController < ApplicationController
     end
 
     def create
-        # render json: params
-        @post = Post.create(post_params)
+        @post = Post.new()
+        @post.admin_id = params["admin_id"] 
+        @post.name = params["name"]
+        @post.text = params["text"]
+        @post.image.attach(params["file"])
+        @post.url = @post.image.service_url
+        @post.save()
+
         if @post.errors.any?
             render json: @post.errors, status: :unprocessable_entity
         else
             render json: @post, status: 201
         end
-        # entry = post.create(post_params)
-        # render json: entry
     end
 
     def show
@@ -32,14 +36,22 @@ class PostsController < ApplicationController
         render json: 204
     end
 
+    def test
+        puts params
+        @post = Post.new()
+        @post.admin_id = 1
+        @post.image.attach(params["file"])
+        @post.save()
+
+    end
+
     private
     def post_params
-        return params.require(:post).permit(:name, :text, :admin_id,)
+        return params.require(:post).permit(:name, :text, :admin_id, :file)
     end
 
     def set_post
-    #     @post= Post.find(params[:id])
-    # end
+
         begin
             @post = Post.find(params[:id])
         rescue 

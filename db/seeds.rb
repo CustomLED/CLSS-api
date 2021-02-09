@@ -12,15 +12,15 @@ Admin.destroy_all()
 
 bigdog = Admin.create(username: 'Steven', email: 'customledscreensolutions@gmail.com', password: 'password', password_confirmation: 'password')
 
-lildog = 10.times do |i|
-    Post.create!(
-    name: "Install at Showgirls CBD", 
-    text: "Quote cost $2500, installed for $1000", 
-    admin: bigdog
-)
-end
+# lildog = 3.times do |i|
+#     post = Post.create!(
+#     name: "Install at Showgirls CBD", 
+#     text: "Quote cost $2500, installed for $1000", 
+#     admin: bigdog
+# )
+# end
 
-10.times do |i|
+3.times do |i|
     Enquiry.create(
     first_name: "Vlad", 
     last_name: "Sputnik", 

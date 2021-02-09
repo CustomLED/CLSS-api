@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  post "/image", to: "posts#test"
+
+  resources :posts, only: [:create]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   scope'/api' do
     get '/posts', to: 'posts#index'
@@ -17,4 +20,5 @@ Rails.application.routes.draw do
       post '/sign_in', to: 'admins#sign_in'
     end
   end
+
 end
